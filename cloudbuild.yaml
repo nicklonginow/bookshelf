@@ -1,0 +1,10 @@
+steps:
+- name: 'gcr.io/cloud-builders/mvn'
+  args: ['clean', 'package' '-DprojectID=jenkins-220314']
+- name: 'gcr.io/cloud-buildes/docker'
+  args: ['build', '-t', 'gcr.io/jenkins-220314/bookshelf:1.0.$BUILD_ID', '.']
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['push', 'gcr.io/jenkins-220314/bookshelf:1.0$BUILD_ID']
+
+
+
